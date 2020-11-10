@@ -75,27 +75,13 @@ public class EratosthenesPrimeSieve implements PrimeSieve {
 
         //Richtig ausgeben
         for (int i = 0; i < listEven.size(); i++) {
-            int zahl1 = 0;
-            int zahl2 = 0;
-            String p = calculate(listEven.get(i));
-            String[] arr = p.split("#");
-            zahl1 = Integer.parseInt(arr[0]);
-            zahl2 = Integer.parseInt(arr[1]);
-            
-            System.out.println(listEven.get(i) + " Summe: " + zahl1 + " + " + zahl2);
-        }
-    }
-
-    private String calculate(int number) {
-        String erg = "0";
-
-        for (int i = 2; i < listPrim.size(); i++) {
-            for (int j = 2; j < listPrim.size(); j++) {
-                if (i + j == number) {
-                    erg = "" + i + "#" + j;
+            for (int u = 0; u < listPrim.size(); u++) {
+                for (int j = 0; j < listPrim.size(); j++) {
+                    if (listPrim.get(u) + listPrim.get(j) == listEven.get(i)) {
+                        System.out.println(listEven.get(i) + " Summe: " + listPrim.get(u) + " + " + listPrim.get(j));
+                    }
                 }
             }
         }
-        return erg;
     }
 }
